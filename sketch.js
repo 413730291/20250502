@@ -44,17 +44,20 @@ function windowResized() {
 function drawGraphics() {
   graphics.background(0); // 設定緩衝區背景為黑色
 
-  // 在寬與高每隔 20 繪製圓
+  // 在寬與高每隔 20 繪製方框和圓
   for (let x = 0; x < graphics.width; x += 20) {
     for (let y = 0; y < graphics.height; y += 20) {
       // 從攝影機影像中取得相對應位置的顏色
       let col = capture.get(x, y);
 
-      // 設定圓的顏色並繪製
+      // 繪製方框
       graphics.fill(col);
       graphics.noStroke();
-      graphics.ellipse(x + 10, y + 10, 15, 15); // 圓心偏移 10，大小為 15
+      graphics.rect(x + 1, y + 1, 18, 18); // 方框大小為 18x18，稍微偏移以置中
+
+      // 繪製中間的圓
+      graphics.fill(0); // 圓的顏色為黑色
+      graphics.ellipse(x + 10, y + 10, 5, 5); // 圓心偏移 10，直徑為 5
     }
   }
 }
-  
